@@ -9,19 +9,21 @@ public class PrimeNumber extends Thread{
     @Override
     public void run() {
         System.out.println("Running " + threadName);
-        boolean flag = false;
-        for (int i=2;i<baseNumber/2;i++){
-            if (baseNumber%i==0){
-                flag=true;
-                break;
+        int limit = 1;
+        for(int i=baseNumber; i < (long)Math.pow(baseNumber,2); i++){
+            boolean isPrime = true;
+            for(int j=2; j < i ; j++){
+                if(i % j == 0){
+                    isPrime = false;
+                    break;
+                }
             }
+            if(isPrime)
+                System.out.print(i + " ");
         }
-        if (!flag)
-            System.out.println(baseNumber+" is a prime number.");
-        else
-            System.out.println(baseNumber+" is not a prime number.");
         System.out.println(threadName + " exiting");
     }
+
 
     public PrimeNumber(String threadName, int baseNumber) {
         this.threadName = threadName;
