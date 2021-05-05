@@ -9,20 +9,22 @@ public class PrimeNumber extends Thread{
     @Override
     public void run() {
         System.out.println("Running " + threadName);
-        int limit = 1;
-        for(int i=baseNumber; i < (long)Math.pow(baseNumber,2); i++){
-            boolean isPrime = true;
-            for(int j=2; j < i ; j++){
-                if(i % j == 0){
-                    isPrime = false;
+            for (int i = baseNumber; i < (long) Math.pow(baseNumber, 2); i++) {
+                boolean isPrime = true;
+                for (int j = 2; j < i; j++) {
+                    if (i % j == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime) {
+                    System.out.print(i + " ");
                     break;
                 }
             }
-            if(isPrime)
-                System.out.print(i + " ");
+            System.out.println(threadName + " exiting");
         }
-        System.out.println(threadName + " exiting");
-    }
+
 
 
     public PrimeNumber(String threadName, int baseNumber) {
