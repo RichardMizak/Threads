@@ -25,8 +25,6 @@ public class PrimeNumber extends Thread{
             System.out.println(threadName + " exiting");
         }
 
-
-
     public PrimeNumber(String threadName, int baseNumber) {
         this.threadName = threadName;
         this.baseNumber = baseNumber;
