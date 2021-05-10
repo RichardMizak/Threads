@@ -15,15 +15,13 @@ public class T2 extends Thread {
     @Override
     public synchronized void start() {
         try {
-            worker.setValue(worker.getValue()*2);
-            System.out.println(worker.getValue());
-            wait();
-            synchronized (this.t1){
-                this.t1.notify();
-            }
-        } catch (InterruptedException e) {
+            Thread.sleep(1000);
+            worker.setValue(worker.getValue() * 2);
+            worker.T2();
+        }catch (InterruptedException e){
             e.printStackTrace();
         }
+
     }
 
     @Override

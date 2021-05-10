@@ -12,14 +12,10 @@ public class T1 extends Thread {
     @Override
     public void run() {
         try {
-            worker.setValue(worker.getValue()+2);
-            System.out.println(worker.getValue());
-
-            synchronized (this.t2) {
-                wait();
-                this.t2.notify();
-            }
-        } catch (InterruptedException e) {
+            Thread.sleep(1000);
+            worker.setValue(worker.getValue() + 2);
+            worker.T1();
+        }catch (InterruptedException e){
             e.printStackTrace();
         }
     }
