@@ -2,18 +2,16 @@ package numbers;
 
 public class Worker {
     boolean flag=false;
-    public volatile int value=0;
+    public int value=0;
+    public int sum;
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
+    public Worker(int value) {
         this.value = value;
+        this.sum = value;
     }
 
     public synchronized void T1() {
-        while (value < 1000) {
+        while (sum < 1000) {
             if (flag == true) {
                 try {
                     wait();
@@ -21,13 +19,14 @@ public class Worker {
                     e.printStackTrace();
                 }
             }
-            System.out.println(value);
+            sum=sum+2;
+            System.out.println(sum);
             flag = true;
             notify();
         }
     }
     public synchronized void T2() {
-        while (value < 1000) {
+        while (sum < 1000) {
             if (!flag) {
                 try {
                     wait();
@@ -35,7 +34,8 @@ public class Worker {
                     e.printStackTrace();
                 }
             }
-            System.out.println(value);
+            sum=sum*2;
+            System.out.println(sum);
             flag = false;
             notify();
         }
