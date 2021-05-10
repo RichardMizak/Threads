@@ -1,35 +1,14 @@
 package numbers;
 
 public class Worker {
-    boolean flag=false;
 
+   private int value=0;
 
-    public synchronized void T1(int num){
-        if (flag==true){
-            if (num<1000)
-                num=num+2;
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println(num);
-        flag=true;
-        notify();
+    public int getValue() {
+        return value;
     }
-    public synchronized void T2(int num){
-        if (!flag){
-            if (num<1000)
-                num=num*2;
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println(num);
-        flag=false;
-        notify();
+
+    public void setValue(int value) {
+        this.value = value;
     }
 }

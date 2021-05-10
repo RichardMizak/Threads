@@ -1,25 +1,34 @@
 package numbers;
 
 
-public class T1 implements Runnable {
-    private int number;
-    private volatile int sum;
+public class T1 extends Thread {
     public Worker worker;
     private Thread thread;
+    public T2 t2;
 
-    public T1(int number, Worker worker) {
-        this.number = number;
-        thread = new Thread(this, "t1");
-        thread.start();
+    public T1(Worker worker) {
+        this.worker = worker;
     }
-
     @Override
     public void run() {
-        sum = number;
-    }
+        try {
+            worker.setValue(worker.getValue()+2);
+            System.out.println(worker.getValue());
 
-    public int getSum() {
-        return sum;
+            synchronized (this.t2) {
+                wait();
+                this.t2.notify();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public synchronized void start() {
+        if (thread == null) {
+            thread = new Thread(this, "T1");
+            thread.start();
+        }
     }
 }
 
