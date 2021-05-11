@@ -35,6 +35,7 @@ public class Worker {
                 }
             }
             sum=sum*2;
+            if (sum<1000)
             System.out.println(sum);
             flag = false;
             notify();
