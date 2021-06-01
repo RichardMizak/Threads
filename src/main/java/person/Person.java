@@ -28,4 +28,15 @@ public class Person {
     public int getAge() {
         return age;
     }
+    private int getHashCode(){
+        int hc=0;
+        String vowels="aeiouy";
+        for (int i=0;i<lname.length();i++){
+            char temp=lname.toLowerCase().charAt(i);
+            if (!vowels.contains(String.valueOf(temp))){
+                hc+=Math.pow(2,(lname.length()-i-1));
+            }
+        }
+        return hc;
+    }
 }
