@@ -10,9 +10,6 @@ public class T2 extends Thread {
         thread=new Thread(this,"T2");
         thread.start();
     }
-
-
-
     @Override
     public void run() {
        worker.T2();

@@ -1,8 +1,13 @@
 package Matrix;
 
+
+
 public class Main2 {
     public static void main(String[] args) {
-        int[][] matrix = new int[][]{
+        int a=16123609;
+        String b=Integer.toBinaryString(a);
+        System.out.println(b);
+     /*   int[][] matrix = new int[][]{
                 {2,5,9,8,1},
                 {8,9,-5,2,7},
                 {1,8,7,9,2},
@@ -23,6 +28,6 @@ public class Main2 {
             }
         }
         System.out.println(diagonal_1);
-        System.out.println(diagonal_2);
+        System.out.println(diagonal_2);*/
     }
 }

@@ -13,6 +13,10 @@ public class Main {
         list.add(2);
         list.add(98);
         list.add(2654);
+        List<String> names=new ArrayList<>();
+        names.add("Adam");
+        names.add("Brano");
+        names.add("Riso");
         Main main=new Main();
         // 1;
         for(int i=0;i< list.size();i++) {
@@ -61,6 +65,19 @@ public class Main {
             return num1-num2;
         });
         System.out.println(list);
+
+        System.out.println();
+        Collections.sort(list,(o1, o2) -> {
+            int num1=main.digitSum(o1);
+            int num2=main.digitSum(o2);
+            return num1-num2;
+        });
+        System.out.println(list);
+
+        names.sort(Comparator.reverseOrder());
+        names.forEach((n)->{
+            System.out.print(n+" ");
+        });
 
     }
         int digitSum(int value) {
